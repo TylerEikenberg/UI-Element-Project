@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <link rel="stylesheet" href="style.css">
-     <script src="script.js"></script>
+     <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
+     
     <title>Tyler Eikenberg Project 2</title>
 </head>
 <body>
-    <h1 class="title"Tabs></h1>
-    <div class="container">
+    <h1 class="title">Marvel Comics</h1>
+    <div class="tabContainer">
         <div class="buttonContainer">
-            <button>Tab 1</button>
-            <button>Tab 2</button>
-            <button>Tab 3</button>
-            <button>Tab 4</button>
+            <button onclick="showPanel(0,'#8406a1')">Characters</button>
+            <button onclick="showPanel(1,'#884b96')">Comics</button>
+            <button onclick="showPanel(2,'#8d7c91')">Another Thing</button>
+            <button onclick="showPanel(3,'#d5ced6')">Another Thing</button>
         </div>
         <div class="tabPanel">Tab 1 Content</div>
         <div class="tabPanel">Tab 2 Content</div>
@@ -25,4 +26,5 @@
 
     
 </body>
+<script src="script.js"></script>
 </html>
