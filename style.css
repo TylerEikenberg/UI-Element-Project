@@ -46,7 +46,7 @@ button:hover{
 }
 .char-image-box{
     width: 40%;
-    background-image: url(images/catph.jpg);
+    background-image: none;
     background-size: cover;
     height: 70%;
     margin-left: 5%;

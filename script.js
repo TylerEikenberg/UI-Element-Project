@@ -38,6 +38,8 @@ const charactersUrl = 'https://gateway.marvel.com:443/v1/public/characters' + ge
 
 const charactersTabButton = document.querySelector('.marvelCharacters'); //get character tab button
 const characterImage = document.querySelector('.char-image-box'); //get character image box
+const characterBio = document.querySelector('.character-bio'); //get character bio paragraph
+const characterName = document.querySelector('.character-name');
 
 charactersTabButton.addEventListener('click', function(e) {
   e.preventDefault();
@@ -48,12 +50,14 @@ charactersTabButton.addEventListener('click', function(e) {
       //get random character
       let i = 0;
       i = Math.floor(Math.random() * res.data.results.length);
-      console.log(i);
+      // console.log(i);
+
       //imageUrl = concats the image url and extension together into one string
       let imageUrl = res.data.results[i].thumbnail.path + '.' + res.data.results[i].thumbnail.extension;
-      console.log(imageUrl);
-
+      // console.log(imageUrl);
       characterImage.style.backgroundImage = `url(${imageUrl})`;
+      characterBio.innerHTML = res.data.results[i].description;
+      characterName.innerHTML = res.data.results[i].name;
     })
     .catch(err => console.log(err));
 });
