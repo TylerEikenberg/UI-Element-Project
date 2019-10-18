@@ -13,8 +13,8 @@
     <h1 class="title">Marvel Comics</h1>
     <div class="tabContainer">
         <div class="buttonContainer">
-            <button class = "marvelCharacters" onclick="showPanel(0,'#8406a1')">Characters</button>
-            <button onclick="showPanel(1,'#884b96')">Comics</button>
+            <button onclick="showPanel(0,'#8406a1')">Marvel Comics</button>
+            <button class = "x-men" onclick="showPanel(1,'#884b96')">X-Men</button>
             <button onclick="showPanel(2,'#8d7c91')">Another Thing</button>
             <button onclick="showPanel(3,'#d5ced6')">Another Thing</button>
         </div>
@@ -22,7 +22,21 @@
         
         <!-- This panel holds all character info -->
         <div class="tabPanel">
-                <h2 class="character-name">Character Name</h2>
+            <h2 class="pg">Character Name</h2>
+            <div class="ph"></div>
+            <div class="ph">
+                
+                <p class="ph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    Aliquid odit, asperiores exercitationem eius officia fugiat. 
+                    Enim praesentium officiis perferendis unde adipisci quae nemo 
+                    fugit quam, debitis facere architecto rerum earum.</p>
+            </div>
+        </div>
+
+
+
+        <div class="tabPanel">
+            <h2 class="character-name">Character Name</h2>
             <div class="char-image-box"></div>
             <div class="char-bio-box">
                 
@@ -32,10 +46,6 @@
                     fugit quam, debitis facere architecto rerum earum.</p>
             </div>
         </div>
-
-
-
-        <div class="tabPanel">Tab 2 Content</div>
         <div class="tabPanel">Tab 3 Content</div>
         <div class="tabPanel">Tab 4 Content</div>
     </div>

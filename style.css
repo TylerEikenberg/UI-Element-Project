@@ -2,7 +2,7 @@
 body{
     margin-left: 18%;
     margin-right: 18%;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .title{
@@ -33,7 +33,7 @@ button:hover{
     background-color: greenyellow;
 }
 .tabPanel{
-    /* display: flexbox; */
+    display: flex;
     height: 85%;
     background-color: gray;
     color: white;
@@ -52,4 +52,7 @@ button:hover{
     margin-left: 5%;
     margin-top: -3%;
     border: 2px solid black;
+}
+.char-bio-box{
+
 }

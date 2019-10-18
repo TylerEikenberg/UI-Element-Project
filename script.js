@@ -36,7 +36,7 @@ function getAuthUrl() {
 const baseUrl = 'https://gateway.marvel.com/v1/public' + getAuthUrl(); // set baseUrl to main marvel info
 const charactersUrl = 'https://gateway.marvel.com:443/v1/public/characters' + getAuthUrl(); // set charactersUrl to url of all Marvel characters
 
-const charactersTabButton = document.querySelector('.marvelCharacters'); //get character tab button
+const charactersTabButton = document.querySelector('.x-men'); //get character tab button
 const characterImage = document.querySelector('.char-image-box'); //get character image box
 const characterBio = document.querySelector('.character-bio'); //get character bio paragraph
 const characterName = document.querySelector('.character-name');
