@@ -36,29 +36,16 @@ function getAuthUrl() {
 const baseUrl = 'https://gateway.marvel.com/v1/public' + getAuthUrl(); // set baseUrl to main marvel info
 const charactersUrl = 'https://gateway.marvel.com:443/v1/public/characters' + getAuthUrl(); // set charactersUrl to url of all Marvel characters
 
-const charactersTabButton = document.querySelector('.marvelCharacters');
+const charactersTabButton = document.querySelector('.marvelCharacters'); //get character tab button
+const characterImage = document.querySelector('.char-image-box'); //get character image box
+
 charactersTabButton.addEventListener('click', function(e) {
   e.preventDefault();
   fetch(charactersUrl)
     .then(res => res.json())
     .then(res => {
       console.log(res);
+      console.log(res.data.results[0].thumbnail.path)
+      
     })
     .catch(err => console.log(err));
-});
-
-// fetch(url, {
-//     headers: {
-//       'cat-api-key': '947a2018-feec-4a13-a15d-081376ec218a',
-//     },
-//   })
-//     .then(res => res.json())
-//     .then(res => {
-//       catImage = res[0].url;
-//       console.log(res);
-//       console.log(catImage);
-//       img.src = catImage;
-//     })
-
-//     .catch(err => console.log(err));
-// });
