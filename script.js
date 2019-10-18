@@ -41,8 +41,6 @@ const charactersUrl = 'https://gateway.marvel.com:443/v1/public/characters' + ge
  */
 const charactersTabButton = document.querySelector('.x-men'); //get character tab button
 const characterImage = document.querySelector('.char-image-box'); //get character image box
-const characterBio = document.querySelector('.character-bio'); //get character bio paragraph
-const characterName = document.querySelector('.character-name');
 
 let arrayOfXMen = [1009257, 1009718];
 charactersTabButton.addEventListener('click', function(e) {
@@ -56,6 +54,7 @@ charactersTabButton.addEventListener('click', function(e) {
     .then(res => res.json())
     .then(res => {
       console.log(res);
+<<<<<<< HEAD
 
       // console.log(i);
       let arrayOfXMen = [1009257, 1009718];
@@ -67,6 +66,17 @@ charactersTabButton.addEventListener('click', function(e) {
       characterImage.style.backgroundImage = `url(${imageUrl})`;
       characterBio.innerHTML = res.data.results[arrayOfXMen[0]].description;
       characterName.innerHTML = res.data.results[arrayOfXMen[0]].name;
+=======
+      //get random character
+      let i = 0;
+      i = Math.floor(Math.random() * res.data.results.length);
+      console.log(i);
+      //imageUrl = concats the image url and extension together into one string
+      let imageUrl = res.data.results[i].thumbnail.path + '.' + res.data.results[i].thumbnail.extension;
+      console.log(imageUrl);
+
+      characterImage.style.backgroundImage = `url(${imageUrl})`;
+>>>>>>> parent of 0cb8a4e... character tab changes name image and bio
     })
     .catch(err => console.log(err));
 });
