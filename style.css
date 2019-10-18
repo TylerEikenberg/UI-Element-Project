@@ -33,7 +33,6 @@ button:hover{
     background-color: greenyellow;
 }
 .tabPanel{
-    display: flex;
     height: 85%;
     background-color: gray;
     color: white;
@@ -45,6 +44,9 @@ button:hover{
     display: none;
 }
 .char-image-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 40%;
     background-image: none;
     background-size: cover;
@@ -53,6 +55,9 @@ button:hover{
     margin-top: -3%;
     border: 2px solid black;
 }
-.char-bio-box{
+.character-name{
 
+}
+.char-bio-box{
+    width: 50%;
 }

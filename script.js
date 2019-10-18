@@ -36,28 +36,38 @@ function getAuthUrl() {
 const baseUrl = 'https://gateway.marvel.com/v1/public' + getAuthUrl(); // set baseUrl to main marvel info
 const charactersUrl = 'https://gateway.marvel.com:443/v1/public/characters' + getAuthUrl(); // set charactersUrl to url of all Marvel characters
 
+/**
+ * The following code applies to the X-Men tab of the page
+ */
 const charactersTabButton = document.querySelector('.x-men'); //get character tab button
 const characterImage = document.querySelector('.char-image-box'); //get character image box
 const characterBio = document.querySelector('.character-bio'); //get character bio paragraph
 const characterName = document.querySelector('.character-name');
 
+let arrayOfXMen = [1009257, 1009718];
 charactersTabButton.addEventListener('click', function(e) {
   e.preventDefault();
+  //get random X-Men characters
+  let i = 0;
+  i = Math.floor(Math.random() * arrayOfXMen.length);
+
+  const charactersByIdUrl = `https://gateway.marvel.com:443/v1/public/characters${arrayOfXMen[i]}` + getAuthUrl();
   fetch(charactersUrl)
     .then(res => res.json())
     .then(res => {
       console.log(res);
-      //get random character
-      let i = 0;
-      i = Math.floor(Math.random() * res.data.results.length);
+
       // console.log(i);
+      let arrayOfXMen = [1009257, 1009718];
 
       //imageUrl = concats the image url and extension together into one string
-      let imageUrl = res.data.results[i].thumbnail.path + '.' + res.data.results[i].thumbnail.extension;
+      let imageUrl =
+        res.data.results[arrayOfXMen[0]].thumbnail.path + '.' + res.data.results[arrayOfXMen[0]].thumbnail.extension;
       // console.log(imageUrl);
       characterImage.style.backgroundImage = `url(${imageUrl})`;
-      characterBio.innerHTML = res.data.results[i].description;
-      characterName.innerHTML = res.data.results[i].name;
+      characterBio.innerHTML = res.data.results[arrayOfXMen[0]].description;
+      characterName.innerHTML = res.data.results[arrayOfXMen[0]].name;
     })
     .catch(err => console.log(err));
 });
+/******************************************************************************** */
