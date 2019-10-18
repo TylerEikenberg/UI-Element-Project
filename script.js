@@ -45,7 +45,9 @@ charactersTabButton.addEventListener('click', function(e) {
     .then(res => res.json())
     .then(res => {
       console.log(res);
-      console.log(res.data.results[0].thumbnail.path)
-      
+      let imageUrl = res.data.results[0].thumbnail.path + '.' + res.data.results[0].thumbnail.extension;
+      console.log(imageUrl);
+      characterImage.style.backgroundImage = `url(${imageUrl})`;
     })
     .catch(err => console.log(err));
+});
