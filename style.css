@@ -1,4 +1,3 @@
-
 body{
     margin-left: 18%;
     margin-right: 18%;
@@ -33,6 +32,7 @@ button:hover{
     background-color: greenyellow;
 }
 .tabPanel{
+    /* display: flexbox; */
     height: 85%;
     background-color: gray;
     color: white;
@@ -44,20 +44,11 @@ button:hover{
     display: none;
 }
 .char-image-box{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     width: 40%;
-    background-image: url(images/catph.jpg);
+    background-image: none;
     background-size: cover;
     height: 70%;
     margin-left: 5%;
     margin-top: -3%;
     border: 2px solid black;
-}
-.character-name{
-
-}
-.char-bio-box{
-    width: 50%;
 }
