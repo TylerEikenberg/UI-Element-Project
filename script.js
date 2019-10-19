@@ -89,3 +89,84 @@ charactersTabButton.addEventListener('click', function(e) {
     })
     .catch(err => console.log(err));
 });
+
+/**
+ * Retrieving all characters
+ *
+ */
+
+let characterMap = {};
+
+// Add each character into the map keyed off by name and value equal to the rest of the characeter data
+
+const buildCharacterMap = characters => {
+  for (let i = 0; i < characters.length; i++) {
+    // Get current character
+    const character = characters[i];
+    // console.log(character);
+
+    // Add name to character map as key and set value characters info
+    characterMap[character.name] = character;
+    //
+  }
+};
+//function charactersUrl gets a new url using the limit and offset values
+const getCharactersUrl = (limit, offset) =>
+  `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}&offset=${offset}` + getAuthUrl();
+
+const getAllCharacters = characterResults => {
+  let limit = 100;
+  let offset = 0;
+  let totalCharacters;
+
+  fetch(getCharactersUrl(limit, offset))
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      buildCharacterMap(res.data.results);
+      totalCharacters = res.data.total;
+
+      //Loop through and retrieve 100 new characters every loop and continue looping until offset >= totalCharacters
+      for (let i = 100; i <= totalCharacters; i += 100) {
+        // fetch(charactersUrl)
+        // buildCharacterMap(res.data.results)
+      }
+      // offset += 100;
+      console.log(characterMap);
+    });
+};
+getAllCharacters();
+// const characters = [
+//   {
+//     name: 'Spider-Man',
+//     stories: [],
+//     bio: 'This is spidermans bio',
+//   },
+//   {
+//     name: 'Wolverine',
+//     stories: [],
+//     bio: 'This is wolverine bio',
+//   },
+//   {
+//     name: 'Hulk',
+//     stories: [],
+//     bio: 'This is hulk bio',
+//   },
+//   {
+//     name: 'Captain America',
+//     stories: [],
+//     bio: 'This is capt amer bio',
+//   },
+//   {
+//     name: 'Iron Man',
+//     stories: [],
+//     bio: 'This is iron man bio',
+//   },
+//   {
+//     name: 'Spider-Man',
+//     stories: ['123', '123'],
+//     bio: 'This is spidermans bio #2',
+//   },
+// ];
+
+// buildCharacterMap(characters);
