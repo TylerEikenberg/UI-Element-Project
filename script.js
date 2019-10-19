@@ -1,21 +1,30 @@
-let tabButtons = document.querySelectorAll('.tabContainer .buttonContainer button');
-let tabPanels = document.querySelectorAll('.tabContainer .tabPanel');
-
-function showPanel(panelIndex, colorCode) {
-  tabButtons.forEach(function(node) {
-    node.style.backgroundColor = '';
-    node.style.color = '';
-  });
-  tabButtons[panelIndex].style.backgroundColor = colorCode;
-  tabButtons[panelIndex].style.color = 'white';
-  tabPanels.forEach(function(node) {
-    node.style.display = 'none';
-  });
-  tabPanels[panelIndex].style.display = 'block';
-  tabPanels[panelIndex].style.backgroundColor = colorCode;
+class Tabs {
+  constructor(tabButtons, tabPanels) {
+    this.tabButtons = tabButtons;
+    this.tabPanels = tabPanels;
+  }
+  showPanel(panelIndex, colorCode) {
+    this.tabButtons.forEach(function(node) {
+      node.style.backgroundColor = '';
+      node.style.color = '';
+    });
+    this.tabButtons[panelIndex].style.backgroundColor = colorCode;
+    this.tabButtons[panelIndex].style.color = 'white';
+    this.tabPanels.forEach(function(node) {
+      node.style.display = 'none';
+    });
+    this.tabPanels[panelIndex].style.display = 'flex';
+    this.tabPanels[panelIndex].style['flex-direction'] = 'column';
+    this.tabPanels[panelIndex].style.backgroundColor = colorCode;
+  }
 }
 
-showPanel(0, '#8406a1');
+let mainTabs = new Tabs(
+  document.querySelectorAll('.tabContainer .buttonContainer button'),
+  document.querySelectorAll('.tabContainer .tabPanel')
+);
+mainTabs.showPanel(0, '#8406a1');
+
 /**
  * **************************************************************************
  */
@@ -34,9 +43,10 @@ function getAuthUrl() {
 }
 
 const baseUrl = 'https://gateway.marvel.com/v1/public' + getAuthUrl(); // set baseUrl to main marvel info
-let limit = 10;
-let offset = 600;
-const charactersUrl = `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}&offset=${0}` + getAuthUrl(); // set charactersUrl to url of all Marvel characters
+let limit = 5;
+let offset = 742;
+const charactersUrl =
+  `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}&offset=${offset}` + getAuthUrl(); // set charactersUrl to url of all Marvel characters
 // const limitAndOffset = ?limit=60&offset=20
 
 const charactersTabButton = document.querySelector('.marvelCharacters'); //get character tab button
@@ -60,19 +70,8 @@ charactersTabButton.addEventListener('click', function(e) {
       // console.log(imageUrl);
       characterImage.style.backgroundImage = `url(${imageUrl})`;
       characterBio.innerHTML = res.data.results[i].description;
+      console.log(res.data.results[i].description);
       characterName.innerHTML = res.data.results[i].name;
     })
     .catch(err => console.log(err));
 });
-
-// fetch(charactersUrl)
-//   .then(res => res.json())
-//   .then(res => {
-//     console.log(res.data.results[19]);
-//     for (let i = res.data.results.length; i <= res.data.results.length; i--) {
-//       if (res.data.results[i].id === 1009718) {
-//         console.log(res.data.results[i].name);
-//       }
-//     }
-//   })
-//   .catch(err => console.log(err));

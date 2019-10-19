@@ -32,7 +32,7 @@ button:hover{
     background-color: greenyellow;
 }
 .tabPanel{
-    /* display: flexbox; */
+    position: relative;
     height: 85%;
     background-color: gray;
     color: white;
@@ -45,10 +45,33 @@ button:hover{
 }
 .char-image-box{
     width: 40%;
-    background-image: none;
+    background-image: url("images/marvelcomic.png");
     background-size: cover;
     height: 70%;
     margin-left: 5%;
     margin-top: -3%;
     border: 2px solid black;
+}
+.character-name{
+    padding-bottom: 3%;
+}
+.character-bio{
+    margin-left: 48%;
+    width: 50%;
+    position: absolute;
+    margin-top: -26%;
+}
+
+@media (max-width: 600px) {
+    .body-small{
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-top: 0%;
+    }
+    .stacking{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
 }
