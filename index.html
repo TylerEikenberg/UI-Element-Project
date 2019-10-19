@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <link rel="stylesheet" href="style.css">
      <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Quantico:700i|Roboto+Condensed:700i&display=swap" rel="stylesheet">
      
     <title>Tyler Eikenberg Project 2</title>
 </head>
@@ -15,7 +17,7 @@
         <div class="buttonContainer">
             
             <button class = "marvelCharacters tabButtons" onclick="mainTabs.showPanel(0,'#f3d403')">Characters</button>
-            <button class = "tabButtons" onclick="mainTabs.showPanel(1,'#884b96')">Comics</button>
+            <button class = "xmenCharacters tabButtons" onclick="mainTabs.showPanel(1,'#884b96')">X-Men</button>
             <button class = "tabButtons" onclick="mainTabs.showPanel(2,'#8d7c91')">Another Thing</button>
             <button class = "tabButtons" onclick="mainTabs.showPanel(3,'#d5ced6')">Another Thing</button>
         </div>
@@ -36,7 +38,14 @@
 
 
 
-        <div class="tabPanel stacking">Tab 2 Content</div>
+        <div class="tabPanel stacking">
+                <h2 class="character-name">X-Men</h2>
+                <div class="char-image-box-xmen"></div>
+                <div class="char-bio-box">
+                <p class="character-bio">The X-Men are awesome!</p>
+            </div>
+        </div>
+
         <div class="tabPanel stacking">Tab 3 Content</div>
         <div class="tabPanel stacking">Tab 4 Content</div>
 
