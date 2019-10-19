@@ -23,7 +23,7 @@ let mainTabs = new Tabs(
   document.querySelectorAll('.tabContainer .buttonContainer button'),
   document.querySelectorAll('.tabContainer .tabPanel')
 );
-mainTabs.showPanel(0, '#8406a1');
+mainTabs.showPanel(0, '#f3d403');
 
 /**
  * **************************************************************************
@@ -94,22 +94,19 @@ charactersTabButton.addEventListener('click', function(e) {
  * Retrieving all characters
  *
  */
-
-let characterMap = {};
+const storedMap = window.localStorage.getItem('@marvel-character-map');
+const characterMap = storedMap ? JSON.parse(storedMap) : {};
 
 // Add each character into the map keyed off by name and value equal to the rest of the characeter data
-
 const buildCharacterMap = characters => {
   for (let i = 0; i < characters.length; i++) {
     // Get current character
     const character = characters[i];
-    // console.log(character);
-
     // Add name to character map as key and set value characters info
     characterMap[character.name] = character;
-    //
   }
 };
+
 //function charactersUrl gets a new url using the limit and offset values
 const getCharactersUrl = (limit, offset) =>
   `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}&offset=${offset}` + getAuthUrl();
@@ -122,51 +119,21 @@ const getAllCharacters = characterResults => {
   fetch(getCharactersUrl(limit, offset))
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       buildCharacterMap(res.data.results);
       totalCharacters = res.data.total;
-
       //Loop through and retrieve 100 new characters every loop and continue looping until offset >= totalCharacters
       for (let i = 100; i <= totalCharacters; i += 100) {
-        // fetch(charactersUrl)
-        // buildCharacterMap(res.data.results)
+        fetch(getCharactersUrl(limit, i))
+          .then(res => res.json())
+          .then(res => {
+            buildCharacterMap(res.data.results);
+            window.localStorage.setItem('@marvel-character-map', JSON.stringify(characterMap));
+          });
       }
-      // offset += 100;
-      console.log(characterMap);
     });
 };
-getAllCharacters();
-// const characters = [
-//   {
-//     name: 'Spider-Man',
-//     stories: [],
-//     bio: 'This is spidermans bio',
-//   },
-//   {
-//     name: 'Wolverine',
-//     stories: [],
-//     bio: 'This is wolverine bio',
-//   },
-//   {
-//     name: 'Hulk',
-//     stories: [],
-//     bio: 'This is hulk bio',
-//   },
-//   {
-//     name: 'Captain America',
-//     stories: [],
-//     bio: 'This is capt amer bio',
-//   },
-//   {
-//     name: 'Iron Man',
-//     stories: [],
-//     bio: 'This is iron man bio',
-//   },
-//   {
-//     name: 'Spider-Man',
-//     stories: ['123', '123'],
-//     bio: 'This is spidermans bio #2',
-//   },
-// ];
 
-// buildCharacterMap(characters);
+// Only query for the data again when characterMap loaded is empty
+if (Object.keys(characterMap).length === 0) {
+  getAllCharacters();
+}
