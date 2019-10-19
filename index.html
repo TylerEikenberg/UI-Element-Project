@@ -12,23 +12,22 @@
     <title>Tyler Eikenberg Project 2</title>
 </head>
 <body class="body-small">
-    <h1 class="title">Marvel Comics</h1>
+    <h1 class="title">Marvel Comics Universe</h1>
     <div class="tabContainer">
         <div class="buttonContainer">
             
             <button class = "marvelCharacters tabButtons" onclick="mainTabs.showPanel(0,'#f3d403')">Characters</button>
-            <button class = "xmenCharacters tabButtons" onclick="mainTabs.showPanel(1,'#884b96')">X-Men</button>
-            <button class = "tabButtons" onclick="mainTabs.showPanel(2,'#8d7c91')">Another Thing</button>
-            <button class = "tabButtons" onclick="mainTabs.showPanel(3,'#d5ced6')">Another Thing</button>
+            <button class = "xmenCharacters tabButtons" onclick="mainTabs.showPanel(1,'#0371d6')">X-Men</button>
+            <button class = "avengersCharacters tabButtons" onclick="mainTabs.showPanel(2,'#e18b02')">The Avengers</button>
+            <button class = "gotgcharacters tabButtons" onclick="mainTabs.showPanel(3,'#411081')">Guardians of the Galaxy</button>
         </div>
         
        
         <!-- This panel holds all character info -->
         <div class="tabPanel stacking">
-                <h2 class="character-name">Marvel Comics</h2>
+                <h2 class="character-name">Marvel</h2>
             <div class="char-image-box"></div>
-            <div class="char-bio-box">
-                
+            <div class="char-bio-box">              
                 <p class="character-bio">Founded in 1939, Marvel Comics is one of the biggest powerhouses 
                                         in the comic book industry. Explore the Marvel Comic universe using 
                                         this helpful tool!
@@ -36,8 +35,7 @@
             </div>
         </div>
 
-
-
+        <!-- This tab holds everything for the X-Men -->
         <div class="tabPanel stacking">
                 <h2 class="character-name">X-Men</h2>
                 <div class="char-image-box-xmen"></div>
@@ -46,8 +44,25 @@
             </div>
         </div>
 
-        <div class="tabPanel stacking">Tab 3 Content</div>
-        <div class="tabPanel stacking">Tab 4 Content</div>
+        <!-- This tab holds everything for The Avengers -->
+        <div class="tabPanel stacking">
+                <h2 class="character-name">The Avengers</h2>
+                <div class="char-image-box-avengers"></div>
+                <div class="char-bio-box">
+                <p class="character-bio">The Avengers are awesome!</p>
+            </div>
+        </div>
+        
+
+        <!-- This tab hods everything for the Guardians of the Galaxy -->
+        <div class="tabPanel stacking">
+                    <h2 class="character-name">Guardians of the Galaxy</h2>
+                    <div class="char-image-box-gotg"></div>
+                    <div class="char-bio-box">
+                    <p class="character-bio">The Guardians of the Galaxy are awesome!</p>
+                </div>
+        </div>
+        </div>
 
         <!-- Scott made my loading screen -->
         <div id="loading-overlay" class="overlay" style="display: none;"></div>
