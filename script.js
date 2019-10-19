@@ -38,15 +38,15 @@ const marvelKeyPrivate = '1e512f1ad0b7af9586a731e12e07db918d04d8fb';
 function getAuthUrl() {
   let timestamp = Date.now();
   let hash = md5(timestamp + marvelKeyPrivate + marvelKeyPublic);
-  let auth = `?&ts=${timestamp}&apikey=${marvelKeyPublic}&hash=${hash}`;
+  let auth = `&ts=${timestamp}&apikey=${marvelKeyPublic}&hash=${hash}`;
   return auth;
 }
 
 const baseUrl = 'https://gateway.marvel.com/v1/public' + getAuthUrl(); // set baseUrl to main marvel info
-let limit = 5;
-let offset = 1200;
-const charactersUrl =
-  `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}&offset=${offset}` + getAuthUrl(); // set charactersUrl to url of all Marvel characters
+let limit = 100;
+let offset = 0;
+let name = 'Spider-Man';
+const charactersUrl = `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}` + getAuthUrl(); // set charactersUrl to url of all Marvel characters
 // const limitAndOffset = ?limit=60&offset=20
 
 const charactersTabButton = document.querySelector('.marvelCharacters'); //get character tab button
@@ -54,8 +54,19 @@ const characterImage = document.querySelector('.char-image-box'); //get characte
 const characterBio = document.querySelector('.character-bio'); //get character bio paragraph
 const characterName = document.querySelector('.character-name');
 
+// Store all the characetrs here
+// const characterMap = {};
+
+const l = document.getElementById('loading-indicator');
+const o = document.getElementById('loading-overlay');
+
 charactersTabButton.addEventListener('click', function(e) {
   e.preventDefault();
+  // Get all characters
+  // Trigger loading
+  l.style.display = 'block';
+  o.style.display = 'block';
+
   fetch(charactersUrl)
     .then(res => res.json())
     .then(res => {
@@ -72,6 +83,9 @@ charactersTabButton.addEventListener('click', function(e) {
       characterBio.innerHTML = res.data.results[i].description;
       console.log(res.data.results[i].description);
       characterName.innerHTML = res.data.results[i].name;
+      // Add to character map
+      l.style.display = 'none';
+      o.style.display = 'none';
     })
     .catch(err => console.log(err));
 });
