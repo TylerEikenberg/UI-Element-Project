@@ -44,7 +44,7 @@ function getAuthUrl() {
 
 const baseUrl = 'https://gateway.marvel.com/v1/public' + getAuthUrl(); // set baseUrl to main marvel info
 let limit = 5;
-let offset = 742;
+let offset = 1200;
 const charactersUrl =
   `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}&offset=${offset}` + getAuthUrl(); // set charactersUrl to url of all Marvel characters
 // const limitAndOffset = ?limit=60&offset=20
