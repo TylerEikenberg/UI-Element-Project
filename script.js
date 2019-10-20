@@ -191,7 +191,7 @@ nextXMen.addEventListener('click', function(e) {
   let imageUrl =
     xmenCharacterMap[xKeys[xIterator]].thumbnail.path + '.' + xmenCharacterMap[xKeys[xIterator]].thumbnail.extension;
   xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
-  if (!xmenCharacterMap[xKeys[xIterator]].description === '') {
+  if (xmenCharacterMap[xKeys[xIterator]].description !== '') {
     //if a character has no bio, keep current paragraph text
     xmenBio.innerHTML = xmenCharacterMap[xKeys[xIterator]].description;
   }
@@ -235,6 +235,86 @@ prevXMen.addEventListener('click', function(e) {
   o.style.display = 'none';
 });
 /************************************************* */
+
+/*********************
+ * The following code is for the AVENGERS PANEL
+ *
+ */
+
+const avengersCharacterMap = {
+  captainAmerica: characterMap['Captain America'],
+  // spiderman: characterMap['Spider-Man'],
+  ironman: characterMap['Iron Man'],
+};
+
+const avengersKeys = Object.keys(avengersCharacterMap); //store avengersCharacterMap keys in array avengersKeys
+console.log(avengersKeys);
+
+const avengersTabButton = document.querySelector('.avengersCharacters'); //get Avenger tab panel button
+const avengersCharacterImage = document.querySelector('.char-image-box-avengers'); //get Avenger image
+const avengersBio = document.querySelector('.avengers-bio');
+const avengersName = document.querySelector('.avengers-name');
+const prevAvenger = document.querySelector('#prevAvenger');
+const nextAvenger = document.querySelector('#nextAvenger');
+let avengerIterator = 0;
+
+/*******************
+ * Event listeners to for functional previous and next buttons that will
+ * cycle back and forth through each character
+ *
+ */
+nextAvenger.addEventListener('click', function(e) {
+  e.preventDefault();
+  l.style.display = 'block';
+  o.style.display = 'block';
+  let imageUrl =
+    avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.path +
+    '.' +
+    avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.extension;
+  avengersCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+  if (avengersCharacterMap[avengersKeys[avengerIterator]].description !== '') {
+    //if a character has no bio, keep current paragraph text
+    avengersBio.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].description;
+  }
+  console.log(avengersCharacterMap[avengersKeys[avengerIterator]].description);
+  xmenName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
+  //if else statement to reset character order
+  if (avengerIterator !== avengersKeys.length - 1) {
+    avengerIterator++;
+  } else {
+    avengerIterator = 0;
+  }
+  // Add to character map
+  l.style.display = 'none';
+  o.style.display = 'none';
+});
+
+prevAvenger.addEventListener('click', function(e) {
+  e.preventDefault();
+  l.style.display = 'block';
+  o.style.display = 'block';
+  let imageUrl =
+    xmenCharacterMap[xKeys[xIterator]].thumbnail.path + '.' + xmenCharacterMap[xKeys[xIterator]].thumbnail.extension;
+  xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+  if (!xmenCharacterMap[xKeys[xIterator]].description === '') {
+    //if a character has no bio, keep current paragraph text
+    xmenBio.innerHTML = xmenCharacterMap[xKeys[xIterator]].description;
+  }
+  console.log(xmenCharacterMap[xKeys[xIterator]].description);
+  xmenName.innerHTML = xmenCharacterMap[xKeys[xIterator]].name;
+  //if else statement to reset character order
+  if (xIterator !== xKeys.length) {
+    xIterator--;
+    if (xIterator < 0) {
+      xIterator = xKeys.length - 1;
+    }
+  } else {
+    xIterator = 0;
+  }
+  // Add to character map
+  l.style.display = 'none';
+  o.style.display = 'none';
+});
 
 // Only query for the data again when characterMap loaded is empty
 if (Object.keys(characterMap).length === 0) {
