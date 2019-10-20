@@ -273,7 +273,6 @@ const avengersCharacterMap = {
 };
 
 const avengersKeys = Object.keys(avengersCharacterMap); //store avengersCharacterMap keys in array avengersKeys
-console.log(avengersKeys);
 
 const avengersTabButton = document.querySelector('.avengersCharacters'); //get Avenger tab panel button
 const avengersCharacterImage = document.querySelector('.char-image-box-avengers'); //get Avenger image
@@ -348,6 +347,24 @@ prevAvenger.addEventListener('click', function(e) {
   l.style.display = 'none';
   o.style.display = 'none';
 });
+
+/*************************************************************************
+ * The following code is for the GUARDIANS OF THE GALAXY panel
+ * */
+
+const gotgMap = {
+  //  starlord:
+  gamora: characterMap['Gamora'],
+  drax: characterMap['Drax'],
+  groot: characterMap['Groot'],
+  rocket: characterMap['Rocket Raccoon'],
+  mantis: characterMap['Mantis'],
+  cosmo: characterMap['Cosmo (dog)'],
+  adam: characterMap['Adam Warlock'],
+  quasar: characterMap['Quasar (Phyla-Vell)'],
+  moondragon: characterMap['Moondragon'],
+  betaray: characterMap['Beta-Ray Bill'],
+};
 
 // Only query for the data again when characterMap loaded is empty
 if (Object.keys(characterMap).length === 0) {
