@@ -43,9 +43,8 @@ function getAuthUrl() {
 }
 
 const baseUrl = 'https://gateway.marvel.com/v1/public' + getAuthUrl(); // set baseUrl to main marvel info
-let limit = 100;
+let limit = 10;
 let offset = 0;
-let name = 'Spider-Man';
 const charactersUrl = `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}` + getAuthUrl(); // set charactersUrl to url of all Marvel characters
 // const limitAndOffset = ?limit=60&offset=20
 
@@ -54,12 +53,13 @@ const characterImage = document.querySelector('.char-image-box'); //get characte
 const characterBio = document.querySelector('.character-bio'); //get character bio paragraph
 const characterName = document.querySelector('.character-name');
 
-// Store all the characetrs here
-// const characterMap = {};
+/*************************************************************************** */
 
+//loading indicator and overlay
 const l = document.getElementById('loading-indicator');
 const o = document.getElementById('loading-overlay');
 
+/**Event listener to retrieve random Marvel character */
 charactersTabButton.addEventListener('click', function(e) {
   e.preventDefault();
   // Get all characters
@@ -132,7 +132,7 @@ const getAllCharacters = characterResults => {
       }
     });
 };
-
+/************************************************************************************ */
 const xmenCharacterMap = {
   cyclops: characterMap['Cyclops'],
   wolverine: characterMap['Wolverine'],
@@ -167,6 +167,31 @@ const xmenCharacterMap = {
   multipleman: characterMap['Multiple Man'],
   storm: characterMap['Storm'],
 };
+
+const xKeys = Object.keys(xmenCharacterMap);
+
+const xMenTabButton = document.querySelector('.xmenCharacters'); //get X-Men tab panel button
+const xmenCharacterImage = document.querySelector('.char-image-box-xmen'); //get x-men image
+const xmenBio = document.querySelector('.xmen-bio');
+const xmenName = document.querySelector('.xmen-name');
+const prevXMen = document.querySelector('#prevXMen');
+const nextXMen = document.querySelector('#nextXMen');
+
+//make next and previous button cycle through characters
+
+nextXMen.addEventListener('click', function(e) {
+  e.preventDefault();
+  l.style.display = 'block';
+  o.style.display = 'block';
+  let imageUrl = xmenCharacterMap['cyclops'].thumbnail.path + '.' + xmenCharacterMap['cyclops'].thumbnail.extension;
+  xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+  xmenBio.innerHTML = xmenCharacterMap['cyclops'].description;
+  console.log(xmenCharacterMap['cyclops'].description);
+  xmenName.innerHTML = xmenCharacterMap['cyclops'].name;
+  // Add to character map
+  l.style.display = 'none';
+  o.style.display = 'none';
+});
 
 // Only query for the data again when characterMap loaded is empty
 if (Object.keys(characterMap).length === 0) {
