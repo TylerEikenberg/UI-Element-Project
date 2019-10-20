@@ -245,6 +245,31 @@ const avengersCharacterMap = {
   captainAmerica: characterMap['Captain America'],
   // spiderman: characterMap['Spider-Man'],
   ironman: characterMap['Iron Man'],
+  blackwidow: characterMap['Black Widow'],
+  hulk: characterMap['Hulk'],
+  // thor: characterMap['Thor'],
+  falcon: characterMap['Falcon'],
+  antman: characterMap['Ant-Man (Scott Lang)'],
+  hankpym: characterMap['Hank Pym'],
+  scarlet: characterMap['Scarlet Witch'],
+  blackpanther: characterMap['Black Panther'],
+  hawkeye: characterMap['Hawkeye'],
+  msmarvel: characterMap['Ms. Marvel (Kamala Khan)'],
+  captainMarvel: characterMap['Captain Marvel (Carol Danvers)'],
+  shield: characterMap['S.H.I.E.L.D.'],
+  namor: characterMap['Namor'],
+  moonknight: characterMap['Moon Knight'],
+  captainBritain: characterMap['Captain Britain'],
+  lukecage: characterMap['Luke Cage'],
+  nova: characterMap['Nova'],
+  ironfist: characterMap['Iron Fist (Danny Rand)'],
+  jessica: characterMap['Jessica Jones'],
+  drstrange: characterMap['Doctor Strange'],
+  daredevil: characterMap['Daredevil'],
+  ironpatriot: characterMap['Iron Patriot'],
+  ghostrider: characterMap['Ghost Rider (Johnny Blaze)'],
+  punisher: characterMap['Punisher'],
+  deadpool: characterMap['Deadpool'],
 };
 
 const avengersKeys = Object.keys(avengersCharacterMap); //store avengersCharacterMap keys in array avengersKeys
@@ -275,13 +300,17 @@ nextAvenger.addEventListener('click', function(e) {
   if (avengersCharacterMap[avengersKeys[avengerIterator]].description !== '') {
     //if a character has no bio, keep current paragraph text
     avengersBio.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].description;
+  } else {
+    avengersBio.innerHTML = 'Avengers are awesome!';
   }
   console.log(avengersCharacterMap[avengersKeys[avengerIterator]].description);
-  xmenName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
+  avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
   //if else statement to reset character order
   if (avengerIterator !== avengersKeys.length - 1) {
+    console.log(avengerIterator);
     avengerIterator++;
   } else {
+    console.log(avengerIterator);
     avengerIterator = 0;
   }
   // Add to character map
@@ -301,6 +330,8 @@ prevAvenger.addEventListener('click', function(e) {
   if (avengersCharacterMap[avengersKeys[avengerIterator]].description !== '') {
     //if a character has no bio, keep current paragraph text
     avengersBio.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].description;
+  } else {
+    avengersBio.innerHTML = 'Avengers are Awesome!';
   }
   console.log(avengersCharacterMap[avengersKeys[avengerIterator]].description);
   avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
