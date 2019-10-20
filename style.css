@@ -292,7 +292,7 @@ button:hover{
   }
   
   .spinner .path {
-    stroke: rgb(233, 202, 200);
+    stroke: #fff;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }
