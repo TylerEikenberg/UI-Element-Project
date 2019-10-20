@@ -133,6 +133,41 @@ const getAllCharacters = characterResults => {
     });
 };
 
+const xmenCharacterMap = {
+  cyclops: characterMap['Cyclops'],
+  wolverine: characterMap['Wolverine'],
+  professorx: characterMap['Professor X'],
+  jeangrey: characterMap['Jean Grey'],
+  rogue: characterMap['Rogue'],
+  beast: characterMap['Beast'],
+  colossus: characterMap['Colossus'],
+  kitty: characterMap['Kitty Pryde'],
+  angel: characterMap['Angel (Warren Worthington III)'],
+  jubilee: characterMap['Jubilee'],
+  iceman: characterMap['Iceman'],
+  bishop: characterMap['Bishop'],
+  morph: characterMap['Morph'],
+  nightcrawler: characterMap['Nightcrawler'],
+  havok: characterMap['Havok'],
+  psylocke: characterMap['Psylocke'],
+  banshee: characterMap['Banshee'],
+  dazzler: characterMap['Dazzler'],
+  gambit: characterMap['Gambit'],
+  magneto: characterMap['Magneto'],
+  cable: characterMap['Cable'],
+  emma: characterMap['Emma Frost'],
+  juggernaut: characterMap['Juggernaut'],
+  mystique: characterMap['Mystique'],
+  quicksilver: characterMap['Quicksilver'],
+  blob: characterMap['Blob'],
+  domino: characterMap['Domino'],
+  forge: characterMap['Forge'],
+  sabretooth: characterMap['Sabretooth'],
+  fantomex: characterMap['Fantomex'],
+  multipleman: characterMap['Multiple Man'],
+  storm: characterMap['Storm'],
+};
+
 // Only query for the data again when characterMap loaded is empty
 if (Object.keys(characterMap).length === 0) {
   getAllCharacters();
