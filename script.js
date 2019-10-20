@@ -55,6 +55,9 @@ const characterName = document.querySelector('.character-name');
 
 /*************************************************************************** */
 
+const nameInput = document.querySelector('#name-input');
+const submitButton = document.querySelector('#submit');
+
 //loading indicator and overlay
 const l = document.getElementById('loading-indicator');
 const o = document.getElementById('loading-overlay');
@@ -444,7 +447,7 @@ prevGotg.addEventListener('click', function(e) {
   } else {
     gotgBio.innerHTML = 'Guardians of the Galaxy are Awesome!';
   }
-  console.log(gotgCharacterMap[gotgKeys[gotgIterator]].description);
+  console.log(gotgIterator);
   gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;
   //if else statement to reset character order
   if (gotgIterator !== gotgKeys.length) {

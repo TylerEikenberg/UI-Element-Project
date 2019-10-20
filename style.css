@@ -53,6 +53,26 @@ button:hover{
     display: none;
     box-shadow: 24px 32px 10px 3px rgba(0,0,0,0.45);
 }
+#name-input{
+    position: absolute;
+    margin-top: 7%;
+    margin-left: 5%;
+    width: 25%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    font-size: 24px;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 0.08em;
+}
+#submit{
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 32%;
+    width: 5%;
+    font-size: 36px;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 0.08em;
+}
 .char-image-box{
     width: 40%;
     background-image: url("images/marvelcomic.png");
