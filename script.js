@@ -55,9 +55,6 @@ const characterName = document.querySelector('.character-name');
 
 /*************************************************************************** */
 
-const nameInput = document.querySelector('#name-input');
-const submitButton = document.querySelector('#submit');
-
 //loading indicator and overlay
 const l = document.getElementById('loading-indicator');
 const o = document.getElementById('loading-overlay');
@@ -153,6 +150,20 @@ const getAllCharacters = characterResults => {
       }
     });
 };
+
+const charMapKeys = Object.keys(characterMap);
+console.log(charMapKeys);
+const nameInput = document.querySelector('#name-input');
+const submitButton = document.querySelector('#submit');
+submitButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  for (let i = 0; i < charMapKeys.length; i++) {
+    if (nameInput.value === charMapKeys[i]) {
+      console.log(nameInput.value);
+    }
+  }
+});
+
 /************************************************************************************ */
 /**The following code controls the XMEN PANEL */
 const xmenCharacterMap = {
