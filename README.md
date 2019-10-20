@@ -19,6 +19,6 @@ For the rest of the tabs I decided to split each one into several different Marv
 the X-Men, the Avengers, and the Guardians of the Galaxy.  
 
 ##### Special Thanks
-Noah helped me get access to the Marvel API and my brother-in-law Scott helped me store all the characters from the API locally  
-as to not make excessivally large calls to the API over and over and over again. My JavaScript initially makes several calls to the API  
+Noah helped me get access to the Marvel API and my brother-in-law Scott helped me store all the characters from the API locally
+as to not make excessivally large calls to the API over and over and over again. My JavaScript initially makes several calls to the API
 to get every character and then stores them in the local browser storage so anytime you pull the page back up it doesn't have to load again.

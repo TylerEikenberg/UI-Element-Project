@@ -118,17 +118,20 @@ const getAllCharacters = async () => {
   o.style.display = 'block';
   // Fetch data
   const res = await fetch(getCharactersUrl(limit, offset)).then(res => res.json());
-  window.localStorage.setItem(`${baseStorageKey}0`, JSON.stringify(buildCharacterMap(res.data.results)));
+  characterMap = buildCharacterMap(res.data.results);
+  window.localStorage.setItem(`${baseStorageKey}0`, JSON.stringify(characterMap));
   totalCharacters = res.data.total;
   //Loop through and retrieve 100 new characters every loop and continue looping until offset >= totalCharacters
   for (let i = limit; i <= totalCharacters; i += limit) {
     await fetch(getCharactersUrl(limit, i))
       .then(res => res.json())
       .then(res => {
-        window.localStorage.setItem(
-          `${baseStorageKey}${i / limit}`,
-          JSON.stringify(buildCharacterMap(res.data.results))
-        );
+        const results = buildCharacterMap(res.data.results);
+        characterMap = {
+          ...characterMap,
+          ...results,
+        };
+        window.localStorage.setItem(`${baseStorageKey}${i / limit}`, JSON.stringify(results));
       });
   }
 
@@ -141,6 +144,7 @@ const getAllCharacters = async () => {
 getAllCharacters().then(() => {
   // We retrieved all the characters
   const charMapKeys = Object.keys(characterMap);
+
   const nameInput = document.querySelector('#name-input');
   const submitButton = document.querySelector('#submit');
 
