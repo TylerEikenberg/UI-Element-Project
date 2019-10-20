@@ -197,7 +197,8 @@ getAllCharacters().then(() => {
   };
 
   const xKeys = Object.keys(xmenCharacterMap); //store xmenCharacterMap keys in array xKeys
-
+  const xMenDefaultBio =
+    'The X-Men are a team of mutants assembled and led by Charles Xavier who use their combined powers to protect mutants, humanity, the world and to promote equality between mutants and humans.';
   const xMenTabButton = document.querySelector('.xmenCharacters'); //get X-Men tab panel button
   const xmenCharacterImage = document.querySelector('.char-image-box-xmen'); //get x-men image
   const xmenBio = document.querySelector('.xmen-bio');
@@ -219,7 +220,10 @@ getAllCharacters().then(() => {
     if (xmenCharacterMap[xKeys[xIterator]].description !== '') {
       //if a character has no bio, keep current paragraph text
       xmenBio.innerHTML = xmenCharacterMap[xKeys[xIterator]].description;
+    } else {
+      xmenBio.innerHTML = xMenDefaultBio;
     }
+    console.log(xmenCharacterMap[xKeys[xIterator]].description);
     console.log(xmenCharacterMap[xKeys[xIterator]].description);
     xmenName.innerHTML = xmenCharacterMap[xKeys[xIterator]].name;
     //if else statement to reset character order
@@ -237,11 +241,11 @@ getAllCharacters().then(() => {
     let imageUrl =
       xmenCharacterMap[xKeys[xIterator]].thumbnail.path + '.' + xmenCharacterMap[xKeys[xIterator]].thumbnail.extension;
     xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
-    if (!xmenCharacterMap[xKeys[xIterator]].description === '') {
+    if (xmenCharacterMap[xKeys[xIterator]].description !== '') {
       //if a character has no bio, keep current paragraph text
       xmenBio.innerHTML = xmenCharacterMap[xKeys[xIterator]].description;
     } else {
-      xmenBio.innerHTML = 'X-Men are awesome!';
+      xmenBio.innerHTML = xMenDefaultBio;
     }
     console.log(xmenCharacterMap[xKeys[xIterator]].description);
 
@@ -265,6 +269,7 @@ getAllCharacters().then(() => {
    */
 
   const avengersCharacterMap = {
+    nickfury: characterMap['Nick Fury'],
     captainAmerica: characterMap['Captain America'],
     spiderman: characterMap['Spider-Man'],
     ironman: characterMap['Iron Man'],
@@ -303,6 +308,8 @@ getAllCharacters().then(() => {
   const avengersName = document.querySelector('.avengers-name');
   const prevAvenger = document.querySelector('#prevAvenger');
   const nextAvenger = document.querySelector('#nextAvenger');
+  const avengersDefaultBio =
+    'The Avengers are a team of superheroes assembled by Nick Fury and the intelligence agency S.H.I.E.L.D. through the Avengers Initiative.';
   let avengerIterator = 0;
 
   /*******************
@@ -321,7 +328,7 @@ getAllCharacters().then(() => {
       //if a character has no bio, keep current paragraph text
       avengersBio.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].description;
     } else {
-      avengersBio.innerHTML = 'Avengers are awesome!';
+      avengersBio.innerHTML = avengersDefaultBio;
     }
     console.log(avengersCharacterMap[avengersKeys[avengerIterator]].description);
     avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
@@ -347,7 +354,7 @@ getAllCharacters().then(() => {
       //if a character has no bio, keep current paragraph text
       avengersBio.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].description;
     } else {
-      avengersBio.innerHTML = 'Avengers are Awesome!';
+      avengersBio.innerHTML = avengersDefaultBio;
     }
     console.log(avengersCharacterMap[avengersKeys[avengerIterator]].description);
     avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
@@ -389,6 +396,8 @@ getAllCharacters().then(() => {
   const gotgName = document.querySelector('.gotg-name');
   const prevGotg = document.querySelector('#prevGotg');
   const nextGotg = document.querySelector('#nextGotg');
+  gotgDefaultBio =
+    'The Guardians of the Galaxy are a band of intergalactic outlaws, who teamed together to protect the galaxy from planetary threats.';
   let gotgIterator = 0;
 
   /*******************
@@ -407,7 +416,7 @@ getAllCharacters().then(() => {
       //if a character has no bio, keep current paragraph text
       gotgBio.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].description;
     } else {
-      gotgBio.innerHTML = 'Guardians of the Galaxy are awesome!';
+      gotgBio.innerHTML = gotgDefaultBio;
     }
     console.log(gotgCharacterMap[gotgKeys[gotgIterator]].description);
     gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;
@@ -433,7 +442,7 @@ getAllCharacters().then(() => {
       //if a character has no bio, keep current paragraph text
       gotgBio.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].description;
     } else {
-      gotgBio.innerHTML = 'Guardians of the Galaxy are Awesome!';
+      gotgBio.innerHTML = gotgDefaultBio;
     }
     console.log(gotgIterator);
     gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;

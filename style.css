@@ -36,8 +36,8 @@ button{
 }
 button:hover{
     
-    box-shadow: inset 400px 0 0 0 rgba(142, 142, 142, 0.767);
-    color: white;
+    box-shadow: inset 400px 0 0 0 rgba(40, 94, 242, 0.767);
+    color: gold;
     transition: 0.7s;
 }
 .tabPanel{
@@ -144,7 +144,7 @@ button:hover{
     margin-left: 48%;
     width: 50%;
     position: absolute;
-    margin-top: -26%;
+    margin-top: -32%;
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 35px;
 }
@@ -160,7 +160,7 @@ button:hover{
     margin-left: 48%;
     width: 50%;
     position: absolute;
-    margin-top: -26%;
+    margin-top: -32%;
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 35px;
 }
