@@ -133,9 +133,10 @@ const getAllCharacters = characterResults => {
     });
 };
 /************************************************************************************ */
+/**The following code controls the XMEN PANEL */
 const xmenCharacterMap = {
   cyclops: characterMap['Cyclops'],
-  wolverine: characterMap['Wolverine'],
+  // wolverine: characterMap['Wolverine'],
   professorx: characterMap['Professor X'],
   jeangrey: characterMap['Jean Grey'],
   rogue: characterMap['Rogue'],
@@ -165,10 +166,10 @@ const xmenCharacterMap = {
   sabretooth: characterMap['Sabretooth'],
   fantomex: characterMap['Fantomex'],
   multipleman: characterMap['Multiple Man'],
-  storm: characterMap['Storm'],
+  // storm: characterMap['Storm'],
 };
 
-const xKeys = Object.keys(xmenCharacterMap);
+const xKeys = Object.keys(xmenCharacterMap); //store xmenCharacterMap keys in array xKeys
 
 const xMenTabButton = document.querySelector('.xmenCharacters'); //get X-Men tab panel button
 const xmenCharacterImage = document.querySelector('.char-image-box-xmen'); //get x-men image
@@ -176,22 +177,64 @@ const xmenBio = document.querySelector('.xmen-bio');
 const xmenName = document.querySelector('.xmen-name');
 const prevXMen = document.querySelector('#prevXMen');
 const nextXMen = document.querySelector('#nextXMen');
+let xIterator = 0;
 
-//make next and previous button cycle through characters
-
+/*******************
+ * Event listeners to for functional previous and next buttons that will
+ * cycle back and forth through each character
+ *
+ */
 nextXMen.addEventListener('click', function(e) {
   e.preventDefault();
   l.style.display = 'block';
   o.style.display = 'block';
-  let imageUrl = xmenCharacterMap['cyclops'].thumbnail.path + '.' + xmenCharacterMap['cyclops'].thumbnail.extension;
+  let imageUrl =
+    xmenCharacterMap[xKeys[xIterator]].thumbnail.path + '.' + xmenCharacterMap[xKeys[xIterator]].thumbnail.extension;
   xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
-  xmenBio.innerHTML = xmenCharacterMap['cyclops'].description;
-  console.log(xmenCharacterMap['cyclops'].description);
-  xmenName.innerHTML = xmenCharacterMap['cyclops'].name;
+  if (!xmenCharacterMap[xKeys[xIterator]].description === '') {
+    //if a character has no bio, keep current paragraph text
+    xmenBio.innerHTML = xmenCharacterMap[xKeys[xIterator]].description;
+  }
+  console.log(xmenCharacterMap[xKeys[xIterator]].description);
+  xmenName.innerHTML = xmenCharacterMap[xKeys[xIterator]].name;
+  //if else statement to reset character order
+  if (xIterator !== xKeys.length - 1) {
+    xIterator++;
+  } else {
+    xIterator = 0;
+  }
   // Add to character map
   l.style.display = 'none';
   o.style.display = 'none';
 });
+
+prevXMen.addEventListener('click', function(e) {
+  e.preventDefault();
+  l.style.display = 'block';
+  o.style.display = 'block';
+  let imageUrl =
+    xmenCharacterMap[xKeys[xIterator]].thumbnail.path + '.' + xmenCharacterMap[xKeys[xIterator]].thumbnail.extension;
+  xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+  if (!xmenCharacterMap[xKeys[xIterator]].description === '') {
+    //if a character has no bio, keep current paragraph text
+    xmenBio.innerHTML = xmenCharacterMap[xKeys[xIterator]].description;
+  }
+  console.log(xmenCharacterMap[xKeys[xIterator]].description);
+  xmenName.innerHTML = xmenCharacterMap[xKeys[xIterator]].name;
+  //if else statement to reset character order
+  if (xIterator !== xKeys.length) {
+    xIterator--;
+    if (xIterator < 0) {
+      xIterator = xKeys.length - 1;
+    }
+  } else {
+    xIterator = 0;
+  }
+  // Add to character map
+  l.style.display = 'none';
+  o.style.display = 'none';
+});
+/************************************************* */
 
 // Only query for the data again when characterMap loaded is empty
 if (Object.keys(characterMap).length === 0) {
