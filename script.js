@@ -23,7 +23,7 @@ let mainTabs = new Tabs(
   document.querySelectorAll('.tabContainer .buttonContainer button'),
   document.querySelectorAll('.tabContainer .tabPanel')
 );
-mainTabs.showPanel(0, '#f3d403');
+mainTabs.showPanel(0, '#66565554');
 
 /**
  * **************************************************************************
