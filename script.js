@@ -94,17 +94,33 @@ charactersTabButton.addEventListener('click', function(e) {
  * Retrieving all characters
  *
  */
-const storedMap = window.localStorage.getItem('@marvel-character-map');
-const characterMap = storedMap ? JSON.parse(storedMap) : {};
+let characterMap;
+
+const storedMap = window.localStorage.getItem(`@marvel-character-map0`);
+
+try {
+  characterMap = storedMap
+    ? Array.from({ length: 15 }).reduce((acc, _, index) => {
+        return {
+          ...acc,
+          ...JSON.parse(window.localStorage.getItem(`@marvel-character-map${index}`)),
+        };
+      }, {})
+    : {};
+} catch (error) {
+  characterMap = {};
+}
 
 // Add each character into the map keyed off by name and value equal to the rest of the characeter data
 const buildCharacterMap = characters => {
+  const localCharacterMap = {};
   for (let i = 0; i < characters.length; i++) {
     // Get current character
     const character = characters[i];
     // Add name to character map as key and set value characters info
-    characterMap[character.name] = character;
+    localCharacterMap[character.name] = character;
   }
+  return localCharacterMap;
 };
 
 //function charactersUrl gets a new url using the limit and offset values
@@ -119,15 +135,17 @@ const getAllCharacters = characterResults => {
   fetch(getCharactersUrl(limit, offset))
     .then(res => res.json())
     .then(res => {
-      buildCharacterMap(res.data.results);
+      window.localStorage.setItem(`@marvel-character-map0`, JSON.stringify(buildCharacterMap(res.data.results)));
       totalCharacters = res.data.total;
       //Loop through and retrieve 100 new characters every loop and continue looping until offset >= totalCharacters
       for (let i = 100; i <= totalCharacters; i += 100) {
         fetch(getCharactersUrl(limit, i))
           .then(res => res.json())
           .then(res => {
-            buildCharacterMap(res.data.results);
-            window.localStorage.setItem('@marvel-character-map', JSON.stringify(characterMap));
+            window.localStorage.setItem(
+              `@marvel-character-map${i / 100}`,
+              JSON.stringify(buildCharacterMap(res.data.results))
+            );
           });
       }
     });
@@ -352,7 +370,7 @@ prevAvenger.addEventListener('click', function(e) {
  * The following code is for the GUARDIANS OF THE GALAXY panel
  * */
 
-const gotgMap = {
+const gotgCharacterMap = {
   //  starlord:
   gamora: characterMap['Gamora'],
   drax: characterMap['Drax'],
@@ -366,6 +384,81 @@ const gotgMap = {
   betaray: characterMap['Beta-Ray Bill'],
 };
 
+const gotgKeys = Object.keys(gotgCharacterMap); //store gotgCharacterMap keys in array gotgKeys
+
+const gotgTabButton = document.querySelector('.gotgCharacters'); //get Gotg tab panel button
+const gotgCharacterImage = document.querySelector('.char-image-box-gotg'); //get GOTG image
+const gotgBio = document.querySelector('.gotg-bio');
+const gotgName = document.querySelector('.gotg-name');
+const prevGotg = document.querySelector('#prevGotg');
+const nextGotg = document.querySelector('#nextGotg');
+let gotgIterator = 0;
+
+/*******************
+ * Event listeners to for functional previous and next buttons that will
+ * cycle back and forth through each character
+ *
+ */
+nextGotg.addEventListener('click', function(e) {
+  e.preventDefault();
+  l.style.display = 'block';
+  o.style.display = 'block';
+  let imageUrl =
+    gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.path +
+    '.' +
+    gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.extension;
+  gotgCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+  if (gotgCharacterMap[gotgKeys[gotgIterator]].description !== '') {
+    //if a character has no bio, keep current paragraph text
+    gotgBio.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].description;
+  } else {
+    gotgBio.innerHTML = 'Guardians of the Galaxy are awesome!';
+  }
+  console.log(gotgCharacterMap[gotgKeys[gotgIterator]].description);
+  gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;
+  //if else statement to reset character order
+  if (gotgIterator !== gotgKeys.length - 1) {
+    console.log(gotgIterator);
+    gotgIterator++;
+  } else {
+    console.log(gotgIterator);
+    gotgIterator = 0;
+  }
+  // Add to character map
+  l.style.display = 'none';
+  o.style.display = 'none';
+});
+
+prevGotg.addEventListener('click', function(e) {
+  e.preventDefault();
+  l.style.display = 'block';
+  o.style.display = 'block';
+  let imageUrl =
+    gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.path +
+    '.' +
+    gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.extension;
+  gotgCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+  if (gotgCharacterMap[gotgKeys[gotgIterator]].description !== '') {
+    //if a character has no bio, keep current paragraph text
+    gotgBio.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].description;
+  } else {
+    gotgBio.innerHTML = 'Guardians of the Galaxy are Awesome!';
+  }
+  console.log(gotgCharacterMap[gotgKeys[gotgIterator]].description);
+  gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;
+  //if else statement to reset character order
+  if (gotgIterator !== gotgKeys.length) {
+    gotgIterator--;
+    if (gotgIterator < 0) {
+      gotgIterator = gotgKeys.length - 1;
+    }
+  } else {
+    gotgIterator = 0;
+  }
+  // Add to character map
+  l.style.display = 'none';
+  o.style.display = 'none';
+});
 // Only query for the data again when characterMap loaded is empty
 if (Object.keys(characterMap).length === 0) {
   getAllCharacters();
