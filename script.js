@@ -58,37 +58,8 @@ const characterName = document.querySelector('.character-name');
 //loading indicator and overlay
 const l = document.getElementById('loading-indicator');
 const o = document.getElementById('loading-overlay');
-
-/**Event listener to retrieve random Marvel character */
-charactersTabButton.addEventListener('click', function(e) {
-  e.preventDefault();
-  // Get all characters
-  // Trigger loading
-  l.style.display = 'block';
-  o.style.display = 'block';
-
-  fetch(charactersUrl)
-    .then(res => res.json())
-    .then(res => {
-      console.log(res);
-      //get random character
-      let i = 0;
-      i = Math.floor(Math.random() * res.data.results.length);
-      // console.log(i);
-
-      //imageUrl = concats the image url and extension together into one string
-      let imageUrl = res.data.results[i].thumbnail.path + '.' + res.data.results[i].thumbnail.extension;
-      // console.log(imageUrl);
-      characterImage.style.backgroundImage = `url(${imageUrl})`;
-      characterBio.innerHTML = res.data.results[i].description;
-      console.log(res.data.results[i].description);
-      characterName.innerHTML = res.data.results[i].name;
-      // Add to character map
-      l.style.display = 'none';
-      o.style.display = 'none';
-    })
-    .catch(err => console.log(err));
-});
+l.style.display = 'none';
+o.style.display = 'none';
 
 /**
  * Retrieving all characters
@@ -160,6 +131,12 @@ submitButton.addEventListener('click', function(e) {
   for (let i = 0; i < charMapKeys.length; i++) {
     if (nameInput.value === charMapKeys[i]) {
       console.log(nameInput.value);
+      let imageUrl =
+        characterMap[charMapKeys[i]].thumbnail.path + '.' + characterMap[charMapKeys[i]].thumbnail.extension;
+      characterImage.style.backgroundImage = `url(${imageUrl})`;
+      characterBio.innerHTML = characterMap[charMapKeys[i]].description;
+      console.log(characterMap[charMapKeys[i]].description);
+      characterName.innerHTML = characterMap[charMapKeys[i]].name;
     }
   }
 });
