@@ -294,22 +294,24 @@ prevAvenger.addEventListener('click', function(e) {
   l.style.display = 'block';
   o.style.display = 'block';
   let imageUrl =
-    xmenCharacterMap[xKeys[xIterator]].thumbnail.path + '.' + xmenCharacterMap[xKeys[xIterator]].thumbnail.extension;
-  xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
-  if (!xmenCharacterMap[xKeys[xIterator]].description === '') {
+    avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.path +
+    '.' +
+    avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.extension;
+  avengersCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+  if (avengersCharacterMap[avengersKeys[avengerIterator]].description !== '') {
     //if a character has no bio, keep current paragraph text
-    xmenBio.innerHTML = xmenCharacterMap[xKeys[xIterator]].description;
+    avengersBio.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].description;
   }
-  console.log(xmenCharacterMap[xKeys[xIterator]].description);
-  xmenName.innerHTML = xmenCharacterMap[xKeys[xIterator]].name;
+  console.log(avengersCharacterMap[avengersKeys[avengerIterator]].description);
+  avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
   //if else statement to reset character order
-  if (xIterator !== xKeys.length) {
-    xIterator--;
-    if (xIterator < 0) {
-      xIterator = xKeys.length - 1;
+  if (avengerIterator !== avengersKeys.length) {
+    avengerIterator--;
+    if (avengerIterator < 0) {
+      avengerIterator = avengersKeys.length - 1;
     }
   } else {
-    xIterator = 0;
+    avengerIterator = 0;
   }
   // Add to character map
   l.style.display = 'none';
