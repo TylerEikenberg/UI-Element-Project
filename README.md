@@ -16,7 +16,7 @@
 For my website I decided to create a set of tabs. The first tab is an introduction to the site and holds a search bar  
 to search for any of the almost 1500 Marvel characters within the Marvel API.  
 For the rest of the tabs I decided to split each one into several different Marvel character superhero teams;  
-the X-Men, the Avengers, and the Guardians of the Galaxy. When you first load the page it will take a minute to load all the characters. 
+the X-Men, the Avengers, and the Guardians of the Galaxy. When you first load the page it mat take a minute or two to load all the characters. 
 
 ##### Special Thanks
 Noah helped me get access to the Marvel API and my brother-in-law Scott helped me store all the characters from the API locally
