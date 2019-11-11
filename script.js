@@ -218,6 +218,15 @@ getAllCharacters().then(() => {
    */
   nextXMen.addEventListener('click', function(e) {
     e.preventDefault();
+    if (xIterator === xKeys.length - 1) {
+      console.log(xIterator);
+      xIterator = 0;
+      console.log(xIterator);
+    } else {
+      console.log(xIterator);
+      xIterator++;
+    }
+
     let imageUrl =
       xmenCharacterMap[xKeys[xIterator]].thumbnail.path + '.' + xmenCharacterMap[xKeys[xIterator]].thumbnail.extension;
     xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
@@ -227,21 +236,21 @@ getAllCharacters().then(() => {
     } else {
       xmenBio.innerHTML = xMenDefaultBio;
     }
-    console.log(xmenCharacterMap[xKeys[xIterator]].description);
-    console.log(xmenCharacterMap[xKeys[xIterator]].description);
     xmenName.innerHTML = xmenCharacterMap[xKeys[xIterator]].name;
     //if else statement to reset character order
-    if (xIterator !== xKeys.length - 1) {
-      xIterator++;
-    } else {
-      xIterator = 0;
-    }
-    // Add to character map
   });
 
   prevXMen.addEventListener('click', function(e) {
     e.preventDefault();
 
+    if (xIterator === 0) {
+      console.log(xIterator);
+      xIterator = xKeys.length - 1;
+    } else {
+      console.log(xIterator);
+      xIterator--;
+    }
+
     let imageUrl =
       xmenCharacterMap[xKeys[xIterator]].thumbnail.path + '.' + xmenCharacterMap[xKeys[xIterator]].thumbnail.extension;
     xmenCharacterImage.style.backgroundImage = `url(${imageUrl})`;
@@ -251,18 +260,10 @@ getAllCharacters().then(() => {
     } else {
       xmenBio.innerHTML = xMenDefaultBio;
     }
-    console.log(xmenCharacterMap[xKeys[xIterator]].description);
 
     xmenName.innerHTML = xmenCharacterMap[xKeys[xIterator]].name;
     //if else statement to reset character order
-    if (xIterator !== xKeys.length) {
-      xIterator--;
-      if (xIterator < 0) {
-        xIterator = xKeys.length - 1;
-      }
-    } else {
-      xIterator = 0;
-    }
+
     // Add to character map
   });
   /************************************************* */
@@ -323,6 +324,12 @@ getAllCharacters().then(() => {
    */
   nextAvenger.addEventListener('click', function(e) {
     e.preventDefault();
+    if (avengerIterator !== avengersKeys.length - 1) {
+      avengerIterator++;
+    } else {
+      avengerIterator = 0;
+    }
+
     let imageUrl =
       avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.path +
       '.' +
@@ -334,35 +341,14 @@ getAllCharacters().then(() => {
     } else {
       avengersBio.innerHTML = avengersDefaultBio;
     }
-    console.log(avengersCharacterMap[avengersKeys[avengerIterator]].description);
     avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
     //if else statement to reset character order
-    if (avengerIterator !== avengersKeys.length - 1) {
-      console.log(avengerIterator);
-      avengerIterator++;
-    } else {
-      console.log(avengerIterator);
-      avengerIterator = 0;
-    }
+
     // Add to character map
   });
 
   prevAvenger.addEventListener('click', function(e) {
     e.preventDefault();
-    let imageUrl =
-      avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.path +
-      '.' +
-      avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.extension;
-    avengersCharacterImage.style.backgroundImage = `url(${imageUrl})`;
-    if (avengersCharacterMap[avengersKeys[avengerIterator]].description !== '') {
-      //if a character has no bio, keep current paragraph text
-      avengersBio.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].description;
-    } else {
-      avengersBio.innerHTML = avengersDefaultBio;
-    }
-    console.log(avengersCharacterMap[avengersKeys[avengerIterator]].description);
-    avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
-    //if else statement to reset character order
     if (avengerIterator !== avengersKeys.length) {
       avengerIterator--;
       if (avengerIterator < 0) {
@@ -371,7 +357,18 @@ getAllCharacters().then(() => {
     } else {
       avengerIterator = 0;
     }
-    // Add to character map
+    let imageUrl =
+      avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.path +
+      '.' +
+      avengersCharacterMap[avengersKeys[avengerIterator]].thumbnail.extension;
+    avengersCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+    if (avengersCharacterMap[avengersKeys[avengerIterator]].description !== '') {
+      //if a character has no bio, keep current paragraph text
+      avengersBio.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].description;
+    } else {
+      avengersBio.innerHTML = avengersDefaultBio;
+    }
+    avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
   });
 
   /*************************************************************************
@@ -411,6 +408,11 @@ getAllCharacters().then(() => {
    */
   nextGotg.addEventListener('click', function(e) {
     e.preventDefault();
+    if (gotgIterator !== gotgKeys.length - 1) {
+      gotgIterator++;
+    } else {
+      gotgIterator = 0;
+    }
     let imageUrl =
       gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.path +
       '.' +
@@ -422,35 +424,14 @@ getAllCharacters().then(() => {
     } else {
       gotgBio.innerHTML = gotgDefaultBio;
     }
-    console.log(gotgCharacterMap[gotgKeys[gotgIterator]].description);
     gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;
     //if else statement to reset character order
-    if (gotgIterator !== gotgKeys.length - 1) {
-      console.log(gotgIterator);
-      gotgIterator++;
-    } else {
-      console.log(gotgIterator);
-      gotgIterator = 0;
-    }
+
     // Add to character map
   });
 
   prevGotg.addEventListener('click', function(e) {
     e.preventDefault();
-    let imageUrl =
-      gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.path +
-      '.' +
-      gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.extension;
-    gotgCharacterImage.style.backgroundImage = `url(${imageUrl})`;
-    if (gotgCharacterMap[gotgKeys[gotgIterator]].description !== '') {
-      //if a character has no bio, keep current paragraph text
-      gotgBio.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].description;
-    } else {
-      gotgBio.innerHTML = gotgDefaultBio;
-    }
-    console.log(gotgIterator);
-    gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;
-    //if else statement to reset character order
     if (gotgIterator !== gotgKeys.length) {
       gotgIterator--;
       if (gotgIterator < 0) {
@@ -459,6 +440,18 @@ getAllCharacters().then(() => {
     } else {
       gotgIterator = 0;
     }
-    // Add to character map
+    let imageUrl =
+      gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.path +
+      '.' +
+      gotgCharacterMap[gotgKeys[gotgIterator]].thumbnail.extension;
+    gotgCharacterImage.style.backgroundImage = `url(${imageUrl})`;
+    if (gotgCharacterMap[gotgKeys[gotgIterator]].description !== '') {
+      //if a character has no bio, keep current paragraph text
+      gotgBio.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].description;
+    } else {
+      gotgBio.innerHTML = gotgDefaultBio;
+    }
+
+    gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;
   });
 });
