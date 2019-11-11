@@ -152,12 +152,11 @@ getAllCharacters().then(() => {
     e.preventDefault();
     for (let i = 0; i < charMapKeys.length; i++) {
       if (nameInput.value === charMapKeys[i]) {
-        console.log(nameInput.value);
         let imageUrl =
           characterMap[charMapKeys[i]].thumbnail.path + '.' + characterMap[charMapKeys[i]].thumbnail.extension;
         characterImage.style.backgroundImage = `url(${imageUrl})`;
         characterBio.innerHTML = characterMap[charMapKeys[i]].description;
-        console.log(characterMap[charMapKeys[i]].description);
+
         characterName.innerHTML = characterMap[charMapKeys[i]].name;
       }
     }
@@ -203,7 +202,6 @@ getAllCharacters().then(() => {
   const xKeys = Object.keys(xmenCharacterMap); //store xmenCharacterMap keys in array xKeys
   const xMenDefaultBio =
     'The X-Men are a team of mutants assembled and led by Charles Xavier who use their combined powers to protect mutants, humanity, the world and to promote equality between mutants and humans.';
-  const xMenTabButton = document.querySelector('.xmenCharacters'); //get X-Men tab panel button
   const xmenCharacterImage = document.querySelector('.char-image-box-xmen'); //get x-men image
   const xmenBio = document.querySelector('.xmen-bio');
   const xmenName = document.querySelector('.xmen-name');
@@ -219,11 +217,8 @@ getAllCharacters().then(() => {
   nextXMen.addEventListener('click', function(e) {
     e.preventDefault();
     if (xIterator === xKeys.length - 1) {
-      console.log(xIterator);
       xIterator = 0;
-      console.log(xIterator);
     } else {
-      console.log(xIterator);
       xIterator++;
     }
 
@@ -244,10 +239,8 @@ getAllCharacters().then(() => {
     e.preventDefault();
 
     if (xIterator === 0) {
-      console.log(xIterator);
       xIterator = xKeys.length - 1;
     } else {
-      console.log(xIterator);
       xIterator--;
     }
 
@@ -262,9 +255,6 @@ getAllCharacters().then(() => {
     }
 
     xmenName.innerHTML = xmenCharacterMap[xKeys[xIterator]].name;
-    //if else statement to reset character order
-
-    // Add to character map
   });
   /************************************************* */
 
@@ -307,7 +297,6 @@ getAllCharacters().then(() => {
 
   const avengersKeys = Object.keys(avengersCharacterMap); //store avengersCharacterMap keys in array avengersKeys
 
-  const avengersTabButton = document.querySelector('.avengersCharacters'); //get Avenger tab panel button
   const avengersCharacterImage = document.querySelector('.char-image-box-avengers'); //get Avenger image
   const avengersBio = document.querySelector('.avengers-bio');
   const avengersName = document.querySelector('.avengers-name');
@@ -342,9 +331,6 @@ getAllCharacters().then(() => {
       avengersBio.innerHTML = avengersDefaultBio;
     }
     avengersName.innerHTML = avengersCharacterMap[avengersKeys[avengerIterator]].name;
-    //if else statement to reset character order
-
-    // Add to character map
   });
 
   prevAvenger.addEventListener('click', function(e) {
@@ -425,9 +411,6 @@ getAllCharacters().then(() => {
       gotgBio.innerHTML = gotgDefaultBio;
     }
     gotgName.innerHTML = gotgCharacterMap[gotgKeys[gotgIterator]].name;
-    //if else statement to reset character order
-
-    // Add to character map
   });
 
   prevGotg.addEventListener('click', function(e) {
